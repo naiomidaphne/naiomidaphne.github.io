@@ -24,7 +24,7 @@
 <meta property="og:description" content="我們可以想像一下…假設你要洗衣服，你需要按洗衣機的觸控面板才能啟動。Sass就像是你使用洗衣觸控面板功能，你的指令會轉化成洗衣機懂的語言，才能啟動洗衣機執行洗衣服。 Sass（英文全稱：Syntactically Awesome Stylesheets），是一個開發的層疊樣式表語言。　Sass是一個將指令碼解析成CSS的手稿語言，即SassScript。Sass包括兩套語法。sass是舊版本，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-22T05:02:50.998Z">
-<meta property="article:modified_time" content="2022-08-22T05:52:54.608Z">
+<meta property="article:modified_time" content="2022-08-22T05:55:27.987Z">
 <meta property="article:author" content="Daphne Shen">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -355,7 +355,7 @@
 <p>在這裡僅僅想通過這樣一個簡單的示例來演示<code>&amp;</code>在選擇器中所承載的對象，換句話說，就是<code>&amp;</code>替代的是哪一處元素。</p>
 <p>這跟其所處的位置以及對應使用的選擇器符號很有關係。</p>
 <h6 id="媒體查詢中的嵌套功能（-Nested-Rules-）"><a href="#媒體查詢中的嵌套功能（-Nested-Rules-）" class="headerlink" title="媒體查詢中的嵌套功能（ Nested Rules ）"></a>媒體查詢中的嵌套功能（ Nested Rules ）</h6><p>在Sass中，媒體查詢配合<code>&amp;</code>符，可以輕鬆的讓你管理幾個不同版式的樣式（方便管理不同斷點下的樣式），先來看一個簡單的示例：</p>
-<pre><code class="hljs"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs sass">    .main &#123;<br>    float: left;<br>    width: 45em;@media (max-width: 480px) &#123;<br>        &amp; &#123;<br>            float: none;<br>            width: 100%;<br>        &#125;<br>    &#125;<br>    &#125;<br>    ```   <br>    <br>編譯出來的CSS:<br>    <br>    ```css<br>    .main &#123;<br>    float: left;<br>    width: 45em;<br>    &#125;<br>    @media (max-width: 480px) &#123;<br>    .main &#123;<br>    float: none;<br>    width: 100%;<br>    &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs sass">    .main &#123;<br>    float: left;<br>    width: 45em;@media (max-width: 480px) &#123;<br>        &amp; &#123;<br>            float: none;<br>            width: 100%;<br>        &#125;<br>    &#125;<br>    &#125;<br>    ```   <br>    <br>編譯出來的CSS:<br><br>   <br>    ```css<br>    .main &#123;<br>    float: left;<br>    width: 45em;<br>    &#125;<br>    @media (max-width: 480px) &#123;<br>    .main &#123;<br>    float: none;<br>    width: 100%;<br>    &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 
 這樣在製作響應式設計的時候是不是變得非常的簡單，而且易於管理你的代碼。
@@ -405,8 +405,10 @@
 <p>編譯出來的CSS：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.block</span> &#123;<br>clolor: red;<br>&#125;<br><span class="hljs-selector-class">.block__element</span> &#123;<br><span class="hljs-attribute">color</span>: green;<br>&#125;<br><span class="hljs-selector-class">.block--modifier</span> &#123;<br><span class="hljs-attribute">color</span>: blue;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>這個是不是簡單輕鬆多了?</p>
-<h6 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h6><pre><code class="hljs">  Sass中的連接符`&amp;`讓你在嵌套和插值的使用過程時，會讓你憂，會讓你喜。
+
+
+
+<pre><code class="hljs">  Sass中的連接符`&amp;`讓你在嵌套和插值的使用過程時，會讓你憂，會讓你喜。
 
  憂的是一不小心使用不對帶來錯誤，或者讓你的代碼變得冗餘。
 
