@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#7ADBBE">
+  <meta name="author" content="Daphne Shen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="就以生活中大家都使用的LINE通訊軟體為例。Line 裡面有不同的主題呈現套件、有社群討論區、有LINE PAY功能、有LINE Today 新聞區…等等。　然後你當使用不同的功能來設定按照它的指示操作後，即可呈現出你想要的效果，這樣就有每個人不同訂製化呈現出的LINE APP。TodoMVC 就像是一個 Line APP。 這是一個知名的開源專案，我們可以透過熟悉 Vue.js 、React 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何運用TodoMVC 架構將後端寫到前端的？">
+<meta property="og:url" content="http://example.com/2022/09/20/20220920/index.html">
+<meta property="og:site_name" content="Do not stop when you are tried, stop when you are done!">
+<meta property="og:description" content="就以生活中大家都使用的LINE通訊軟體為例。Line 裡面有不同的主題呈現套件、有社群討論區、有LINE PAY功能、有LINE Today 新聞區…等等。　然後你當使用不同的功能來設定按照它的指示操作後，即可呈現出你想要的效果，這樣就有每個人不同訂製化呈現出的LINE APP。TodoMVC 就像是一個 Line APP。 這是一個知名的開源專案，我們可以透過熟悉 Vue.js 、React 的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/588e80c6-15df-4f59-9f8a-2ac70c27d6e3/dbgsbefvs.png">
+<meta property="og:image" content="https://blog.gtwang.org/wp-content/uploads/2015/03/todomvc-todo-list.png">
+<meta property="article:published_time" content="2022-09-20T06:34:17.680Z">
+<meta property="article:modified_time" content="2022-09-20T06:39:54.230Z">
+<meta property="article:author" content="Daphne Shen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/588e80c6-15df-4f59-9f8a-2ac70c27d6e3/dbgsbefvs.png">
+  
+  
+  
+  <title>如何運用TodoMVC 架構將後端寫到前端的？ - Do not stop when you are tried, stop when you are done!</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Daphne&#39;s Web Develop Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://img.freepik.com/premium-photo/panorama-banner-background-tropical-forest-landscape-scene-using-concept-environmental-ecology-sustainable-energy-earth-day-wild-wood-scenic-using-wallpaper-spa-tourism_33755-11460.jpg?w=2000') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何運用TodoMVC 架構將後端寫到前端的？"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-20 14:34" pubdate>
+          September 20, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何運用TodoMVC 架構將後端寫到前端的？</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>就以生活中大家都使用的LINE通訊軟體為例。<br>Line 裡面有不同的主題呈現套件、有社群討論區、有LINE PAY功能、有LINE Today 新聞區…等等。　<br>然後你當使用不同的功能來設定按照它的指示操作後，即可呈現出你想要的效果，這樣就有每個人不同訂製化呈現出的LINE APP。<br>TodoMVC 就像是一個 Line APP。</p>
+<p>這是一個知名的開源專案，我們可以透過熟悉 Vue.js 、React 的基本語法、web component 的基本概念，並且熟悉 Vue.js 、React 的專案開發流程，從 CodePen 的環境過渡到本地開發環境。</p>
+<p>TodoMVC 可以在用各種框架實現TodoList的增、刪、改、查功能，麻雀雖小，五臟俱全，是提供給大家學習、練習、再學習的最好範本。</p>
+<ul>
+<li><p><code>**我們先來了解何謂 「MVC架構」**</code></p>
+<p>  🦉 <code>**Model**：後端資料庫進行運作   **View**：前端畫面與邏輯顯示   **Controller**：處理控制流程和回應，以路由以傳遞資料為主</code></p>
+<p>  <img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/588e80c6-15df-4f59-9f8a-2ac70c27d6e3/dbgsbefvs.png" srcset="/img/loading.gif" lazyload alt="        **模型檢視控制器 (Model-View-Controller，MVC)， 這三個套用在 Web 分別為前端 HTML+CSS(View)，後端 API 資料庫(Model)，控制後端資料庫的接口 JavaScript (Controller)**"></p>
+<pre><code class="hljs">      **模型檢視控制器 (Model-View-Controller，MVC)， 這三個套用在 Web 分別為前端 HTML+CSS(View)，後端 API 資料庫(Model)，控制後端資料庫的接口 JavaScript (Controller)**
+</code></pre>
+<p>  　MVC 是許多開發人員熟悉的標準設計模式。有些類型的 Web 應用程式將受益於 MVC 架構。 有些則繼續使用仰賴 Web Form 和回傳的傳統 ASP.NET 應用程式模式。 還有一些類型的 Web 應用程式將合併兩種方式；兩種方式並不互斥。</p>
+<ul>
+<li><p><strong>模型(Model)  —  邏輯層</strong><br>  Model 主要管理與資料邏輯有關的事項，若使用者想要對資料進行「新增、修改、刪除、瀏覽」的動作，都需要透過 Model 中的 JavaScript 來操作，如電商網站的免運費、計算訂單總額…等等。<br>  ****模型物件是實作應用程式資料欄邏輯的應用程式部分。 通常，模型物件會擷取和儲存資料庫中的模型狀態。<br>  例如：Product 物件可能會從資料庫擷取資訊、操作它，然後將更新的資訊寫回SQL Server中的 Products 資料表。<br>  在小型應用程式中，模型通常是概念上的分隔而不是實體分隔。<br>  例如，如果應用程式唯讀取資料集並將它傳送至檢視，則應用程式沒有實體模型層和相關聯的類別。 在此情況下，資料集會採用模型物件的角色。</p>
+</li>
+<li><p><strong>介面檢視(View) —  表現層</strong><br>  View 主要管理第一線與使用者互動的介面，也就是 HTML 樣板，若是動態網站，他則會依照 Model 取出的資料內容，動態呈現使用者需要的網頁內容。<br>  ****View是顯示應用程式使用者介面的元件， (UI) 。 通常此 UI 是從模型資料建立。<br>  例如，Products 資料表的編輯檢視會根據 Products 物件的目前狀態顯示文字方塊、下拉式清單和核取方塊。</p>
+</li>
+<li><p><strong>事件控制器(Controller) —  事件層</strong><br>  Controller 是整個運作過程中的核心，掌握與瀏覽器之間的互動行為，也負責收發 Request 與 Response，因此，通常會在 Controller 設置不同的事件 Event，進而觸發不同指令完成後續動作。<br>  ****可以處理使用者互動、使用模型並且在最後選擇可以轉譯要顯示 UI的檢視。在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。<br>  例如：控制器會處理查詢字串值，並將這些值傳遞至模型，接著會使用值來查詢資料庫。當 Controller 收到請求後，Controller 會通知 Model 調度資料，接著再把資料傳遞給 View 來產生樣板，最終將呈現資料的 HTML 頁面回傳到客戶端的瀏覽器。</p>
+</li>
+</ul>
+<p>  　MVC 模式可幫助您建立分隔應用程式不同方面 (輸入邏輯、商務邏輯和 UI 邏輯) 的應用程式，同時在這些項目之間提供鬆散的結合。<br>  此模式會指定每一種邏輯必須出現在應用程式中的位置。 UI 邏輯位於檢視，輸入邏輯位於控制器， 商務邏輯則位於模型。 此分隔可幫助您在建置應用程式時管理複雜性，因為它可讓您一次專注於實作的一個方面。<br>  例如，您可以專注在檢視上，而不需倚賴商務邏輯。</p>
+<p>  💁🏻 <code>邏輯小測驗:</code></p>
+<p>  <em><strong>1.MVC與 API差異？</strong></em></p>
+<p>  Ans: MVC是個架構，之下可透過RESTful API 進行資料存取、方便管理路由及API</p>
+<p>  <em><strong>2. React 是 MVC架構嗎？</strong></em></p>
+<p>  Ans:  React 應該是只有V，因為到資料庫存取資料仍是透過node.js。</p>
+<p>  <em><strong>3. 但是加入了 Redux 應該也可以算是 MVC 架構？</strong></em></p>
+<p>  Ans:  React扮演的是View的角色，Redux 則是Controller，至於Model就是Redux Store中儲存的State。</p>
+<p>  <em><strong>4. node.js express 框架比較符合 MVC？</strong></em></p>
+<p>  Ans:  Client透過路由發送請求controller，路由到資料庫拿資料model，將資料output 到views ejs 樣板選染畫面給client。</p>
+<p>  🦔 <strong><code>參考資料</code></strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://tw.alphacamp.co/blog/mvc-model-view-controller">MVC架構是什麼？認識 Model-View-Controller 軟體設計模式｜ALPHA Camp Blog</a></p>
+<p>  <a target="_blank" rel="noopener" href="https://iter01.com/70995.html">基於 MVC 理解 React+Redux</a>
+  </p>
+</li>
+<li><p><code>**以前的工程師是如何使用MVC架構完成進行全端開發的?**</code></p>
+<p>  使用 Express.js 框架進行全端開發，也就是運用 MVC 架構，一口氣從後端寫到前端，用這樣的方式完成了一個又一個的 app。</p>
+<p>  然而，在實際開發的場景，愈來愈不太可能看見一個人打全場，或一個工具套全部的狀況，後端工程師、前端工程師、甚至 UI 設計師會共同合作完成產品，視專案的規模，說不定還會把資料庫與 API 分拆成不同的團隊處理。</p>
+<p>  這件事被稱為「前後分離 (separate frontend from backend)」，在解釋前後分離的概念之前，我們先簡單回顧一下「前端」的發展簡史，才能瞭解「前端框架」是在什麼樣的背景下產生的。</p>
+</li>
+<li><p><strong><code>該如何使用TodoMVC架構來進行全端開發呢?</code></strong></p>
+<h3 id="什麼是TodoMVC"><a href="#什麼是TodoMVC" class="headerlink" title="什麼是TodoMVC ?"></a><code>什麼是TodoMVC ?</code></h3><p>  TodoMVC 是一個協助網頁應用程式開發者挑選 MVC 架構工具，透過範例程式讓你可以很快的比較各種架構之間實質上的差異所在。</p>
+<p>  拜網路雲端化的趨勢所賜，全世界有非常多的開發者陸續發展出非常多適用於網頁應用程式的 MVC<br>  架構（framework），其中更有許多優質的開放原始碼架構，無論是功能性與穩定性都非常好，網頁開發者可以利用這些豐富又免費的資源開發各種應用程式，省去自己設計架構的精力與時間。</p>
+<p>  <code>**TodoMVC 網站**</code></p>
+<p>  <a target="_blank" rel="noopener" href="https://todomvc.com/">TodoMVC</a></p>
+<p>  但是由於這樣的 MVC 架構實作品實在太多了，如何從中挑選一個適合自己的架構，又是一個令人頭痛的問題，有時後光去蒐集這類的資訊就已經很費時了，更何況還要消化它們。</p>
+<p>  TodoMVC 將各種常見的網頁 MVC 架構整理出來，並且使用每一個架構實作一個 Todo List 示範程式，開發者可以從這些示範程式的原始碼很快的（應該說比起自己看各種官方網站要快一些）看出每個 MVC 架構的特性與差異，幫助開發者選擇適合自己專案的架構。</p>
+<p>  <img src="https://blog.gtwang.org/wp-content/uploads/2015/03/todomvc-todo-list.png" srcset="/img/loading.gif" lazyload alt="https://blog.gtwang.org/wp-content/uploads/2015/03/todomvc-todo-list.png"></p>
+<p>  如果以一個網頁應用程式的開發者的角度，強烈建議一定要參考一下這個網站，你可能聽過 Backbone.js、AngularJS 與 Ember.js，但是你可能不知道類似的架構常見的就有數十種，如果你要的東西別人已經寫好了，直接拿來用是可以輕鬆很多的。</p>
+<p>  TodoMVC 將各種架構區分為 JavaScript Apps、Compile To JavaScript、MVC Extension Frameworks、Module Loaders 與 Real-time 這幾類，對於有興趣的架構你可以直接動手修改 GitHub 上的原始碼，感覺一下架構是如何運作的，我想這是一般的開發者在學習一個新技術時常會做的事情。</p>
+<p>  另外 TodoMVC 也蒐集了每一種架構的一些網路資源（例如官方文件、社群的教學文件與討論區等），方便開發者查閱，使用起來很方便。</p>
+<p>  💁🏻 **主要學習的目的：<br>  快速認識基本語法<br>  理解在框架裡寫前端，與過去的方式有何不同</p>
+<p>  理解「網站組件化」的概念<br>  透過 Vue Component 或 React 實作來理解組件之間如何傳遞資料，以及傳遞資料時會涉及哪些議題</p>
+<p>  實作一個 SPA 網站<br>  在本機建立開發環境<br>  建立 Component 並設定網站邏輯<br>  體驗開發與 debug 的流程<br>  處理 Routing 和 Model 的對應</p>
+<p>  串接後端 API<br>  體驗什麼是前後分離**</p>
+<p>  🦔 <code>**參考資料**</code></p>
+<p>  <a target="_blank" rel="noopener" href="https://xstate.js.org/docs/examples/todomvc.html#todomvc-with-react">TodoMVC Examples | XState Docs</a></p>
+<p>  <a target="_blank" rel="noopener" href="https://v2.vuejs.org/v2/examples/todomvc.html">TodoMVC - Vue.js</a></p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何運用TodoMVC 架構將後端寫到前端的？</div>
+      <div>http://example.com/2022/09/20/20220920/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Daphne Shen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 20, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/08/20220908/" title="在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？">
+                        <span class="hidden-mobile">在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/naiomidaphne" target="_blank" rel="nofollow noopener"><span>Daphne</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/naiomidaphne" target="_blank" rel="nofollow noopener"><span>Shen</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
