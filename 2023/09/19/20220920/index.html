@@ -14,22 +14,20 @@
   
   <meta name="theme-color" content="#7ADBBE">
   <meta name="author" content="Daphne Shen">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="UI design, CSS, HTML, Javacript, UX design, product design">
   
     <meta name="description" content="就以生活中大家都使用的LINE通訊軟體為例。Line 裡面有不同的主題呈現套件、有社群討論區、有LINE PAY功能、有LINE Today 新聞區…等等。　然後你當使用不同的功能來設定按照它的指示操作後，即可呈現出你想要的效果，這樣就有每個人不同訂製化呈現出的LINE APP。TodoMVC 就像是一個 Line APP。 這是一個知名的開源專案，我們可以透過熟悉 Vue.js 、React 的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何運用TodoMVC 架構將後端寫到前端的？">
-<meta property="og:url" content="http://example.com/2022/09/20/20220920/index.html">
+<meta property="og:url" content="http://example.com/2023/09/19/20220920/index.html">
 <meta property="og:site_name" content="Do not stop when you are tried, stop when you are done!">
 <meta property="og:description" content="就以生活中大家都使用的LINE通訊軟體為例。Line 裡面有不同的主題呈現套件、有社群討論區、有LINE PAY功能、有LINE Today 新聞區…等等。　然後你當使用不同的功能來設定按照它的指示操作後，即可呈現出你想要的效果，這樣就有每個人不同訂製化呈現出的LINE APP。TodoMVC 就像是一個 Line APP。 這是一個知名的開源專案，我們可以透過熟悉 Vue.js 、React 的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/588e80c6-15df-4f59-9f8a-2ac70c27d6e3/dbgsbefvs.png">
-<meta property="og:image" content="https://blog.gtwang.org/wp-content/uploads/2015/03/todomvc-todo-list.png">
-<meta property="article:published_time" content="2022-09-20T06:34:17.680Z">
-<meta property="article:modified_time" content="2022-09-20T06:39:54.230Z">
+<meta property="article:published_time" content="2023-09-19T01:52:14.475Z">
+<meta property="article:modified_time" content="2022-09-20T06:47:26.000Z">
 <meta property="article:author" content="Daphne Shen">
+<meta property="article:tag" content="UI design, CSS, HTML, Javacript, UX design, product design">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/588e80c6-15df-4f59-9f8a-2ac70c27d6e3/dbgsbefvs.png">
   
   
   
@@ -209,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-20 14:34" pubdate>
-          September 20, 2022 pm
+        <time datetime="2023-09-19 09:52" pubdate>
+          September 19, 2023 am
         </time>
       </span>
     
@@ -221,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k words
+          3.5k words
         
       </span>
     
@@ -232,7 +230,7 @@
         
         
         
-          28 mins
+          29 mins
         
       </span>
     
@@ -279,10 +277,10 @@
 <p>這是一個知名的開源專案，我們可以透過熟悉 Vue.js 、React 的基本語法、web component 的基本概念，並且熟悉 Vue.js 、React 的專案開發流程，從 CodePen 的環境過渡到本地開發環境。</p>
 <p>TodoMVC 可以在用各種框架實現TodoList的增、刪、改、查功能，麻雀雖小，五臟俱全，是提供給大家學習、練習、再學習的最好範本。</p>
 <ul>
-<li><p><code>**我們先來了解何謂 「MVC架構」**</code></p>
-<p>  🦉 <code>**Model**：後端資料庫進行運作   **View**：前端畫面與邏輯顯示   **Controller**：處理控制流程和回應，以路由以傳遞資料為主</code></p>
-<p>  <img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/588e80c6-15df-4f59-9f8a-2ac70c27d6e3/dbgsbefvs.png" srcset="/img/loading.gif" lazyload alt="        **模型檢視控制器 (Model-View-Controller，MVC)， 這三個套用在 Web 分別為前端 HTML+CSS(View)，後端 API 資料庫(Model)，控制後端資料庫的接口 JavaScript (Controller)**"></p>
-<pre><code class="hljs">      **模型檢視控制器 (Model-View-Controller，MVC)， 這三個套用在 Web 分別為前端 HTML+CSS(View)，後端 API 資料庫(Model)，控制後端資料庫的接口 JavaScript (Controller)**
+<li><p><code>我們先來了解何謂 「MVC架構」</code></p>
+<p>  🦉 <strong>Model</strong>：後端資料庫進行運作<br>  <strong>View</strong>：前端畫面與邏輯顯示<br>  <strong>Controller</strong>：處理控制流程和回應，以路由以傳遞資料為主&#96;</p>
+<p>  模型檢視控制器 (Model-View-Controller，MVC)， 這三個套用在 Web 分別為前端 HTML+CSS(View)，後端 API 資料庫(Model)，控制後端資料庫的接口 JavaScript (Controller)</p>
+<pre><code class="hljs">模型檢視控制器 (Model-View-Controller，MVC)， 這三個套用在 Web 分別為前端 HTML+CSS(View)，後端 API 資料庫(Model)，控制後端資料庫的接口 JavaScript (Controller)
 </code></pre>
 <p>  　MVC 是許多開發人員熟悉的標準設計模式。有些類型的 Web 應用程式將受益於 MVC 架構。 有些則繼續使用仰賴 Web Form 和回傳的傳統 ASP.NET 應用程式模式。 還有一些類型的 Web 應用程式將合併兩種方式；兩種方式並不互斥。</p>
 <ul>
@@ -320,7 +318,6 @@
 <p>  <a target="_blank" rel="noopener" href="https://todomvc.com/">TodoMVC</a></p>
 <p>  但是由於這樣的 MVC 架構實作品實在太多了，如何從中挑選一個適合自己的架構，又是一個令人頭痛的問題，有時後光去蒐集這類的資訊就已經很費時了，更何況還要消化它們。</p>
 <p>  TodoMVC 將各種常見的網頁 MVC 架構整理出來，並且使用每一個架構實作一個 Todo List 示範程式，開發者可以從這些示範程式的原始碼很快的（應該說比起自己看各種官方網站要快一些）看出每個 MVC 架構的特性與差異，幫助開發者選擇適合自己專案的架構。</p>
-<p>  <img src="https://blog.gtwang.org/wp-content/uploads/2015/03/todomvc-todo-list.png" srcset="/img/loading.gif" lazyload alt="https://blog.gtwang.org/wp-content/uploads/2015/03/todomvc-todo-list.png"></p>
 <p>  如果以一個網頁應用程式的開發者的角度，強烈建議一定要參考一下這個網站，你可能聽過 Backbone.js、AngularJS 與 Ember.js，但是你可能不知道類似的架構常見的就有數十種，如果你要的東西別人已經寫好了，直接拿來用是可以輕鬆很多的。</p>
 <p>  TodoMVC 將各種架構區分為 JavaScript Apps、Compile To JavaScript、MVC Extension Frameworks、Module Loaders 與 Real-time 這幾類，對於有興趣的架構你可以直接動手修改 GitHub 上的原始碼，感覺一下架構是如何運作的，我想這是一般的開發者在學習一個新技術時常會做的事情。</p>
 <p>  另外 TodoMVC 也蒐集了每一種架構的一些網路資源（例如官方文件、社群的教學文件與討論區等），方便開發者查閱，使用起來很方便。</p>
@@ -351,7 +348,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>如何運用TodoMVC 架構將後端寫到前端的？</div>
-      <div>http://example.com/2022/09/20/20220920/</div>
+      <div>http://example.com/2023/09/19/20220920/</div>
     </div>
     <div class="license-meta">
       
@@ -363,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 20, 2022</div>
+          <div>September 19, 2023</div>
         </div>
       
       
@@ -393,15 +390,15 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/09/19/20220908/" title="在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/09/08/20220908/" title="在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？">
-                        <span class="hidden-mobile">在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
