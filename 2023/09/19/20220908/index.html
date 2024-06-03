@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/naiomidaphne.github.io/img/fluid.png">
-  <link rel="icon" href="/naiomidaphne.github.io/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="簡單來說:Method 是一位凡事親力親為，任何事都願意做的人Computed 是一位自私自利的人，只有跟自己有相關的事，他才願意做事，其餘的事情他一概不碰 當我們在做一筆資料做更新時：Method 不管資料有沒有跟它有關係，它一律皆作業更新Computed  資料跟它有相關，它才更新，以程式操作系統來說它會比較有效率 🦉 從作用機制上：  methods，watch 和computed 都是以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？">
-<meta property="og:url" content="https://naiomidaphne.github.io/naiomidaphne.github.io/2023/09/19/20220908/index.html">
+<meta property="og:url" content="http://example.com/2023/09/19/20220908/index.html">
 <meta property="og:site_name" content="Do not stop when you are tried, stop when you are done!">
 <meta property="og:description" content="簡單來說:Method 是一位凡事親力親為，任何事都願意做的人Computed 是一位自私自利的人，只有跟自己有相關的事，他才願意做事，其餘的事情他一概不碰 當我們在做一筆資料做更新時：Method 不管資料有沒有跟它有關係，它一律皆作業更新Computed  資料跟它有相關，它才更新，以程式操作系統來說它會比較有效率 🦉 從作用機制上：  methods，watch 和computed 都是以">
 <meta property="og:locale" content="en_US">
@@ -55,12 +55,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/naiomidaphne.github.io/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/naiomidaphne.github.io/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/naiomidaphne.github.io/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -69,15 +69,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"naiomidaphne.github.io","root":"/naiomidaphne.github.io/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/naiomidaphne.github.io/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/naiomidaphne.github.io/js/utils.js" ></script>
-  <script  src="/naiomidaphne.github.io/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -94,7 +94,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/naiomidaphne.github.io/">
+    <a class="navbar-brand" href="/">
       <strong>Daphne&#39;s Web Develop Blogs</strong>
     </a>
 
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/naiomidaphne.github.io/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/naiomidaphne.github.io/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 Archives
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/naiomidaphne.github.io/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 Categories
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/naiomidaphne.github.io/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 Tags
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/naiomidaphne.github.io/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
@@ -344,7 +344,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>在vue裡面methods跟computed分別是什麼？他們使用上有什麼差別？</div>
-      <div>https://naiomidaphne.github.io/naiomidaphne.github.io/2023/09/19/20220908/</div>
+      <div>http://example.com/2023/09/19/20220908/</div>
     </div>
     <div class="license-meta">
       
@@ -386,7 +386,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/naiomidaphne.github.io/2023/09/19/20220819/" title="My first blog">
+                      <a href="/2023/09/19/20220819/" title="My first blog">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">My first blog</span>
                         <span class="visible-mobile">Previous</span>
@@ -396,7 +396,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/naiomidaphne.github.io/2023/09/19/20220920/" title="如何運用TodoMVC 架構將後端寫到前端的？">
+                      <a href="/2023/09/19/20220920/" title="如何運用TodoMVC 架構將後端寫到前端的？">
                         <span class="hidden-mobile">如何運用TodoMVC 架構將後端寫到前端的？</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -523,8 +523,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/naiomidaphne.github.io/js/events.js" ></script>
-<script  src="/naiomidaphne.github.io/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -546,7 +546,7 @@
 
 
   
-    <script  src="/naiomidaphne.github.io/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -618,7 +618,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/naiomidaphne.github.io/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -626,7 +626,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/naiomidaphne.github.io/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
